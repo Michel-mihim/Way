@@ -14,8 +14,8 @@
             android:id="@+id/action_startFragment_to_factFragment"
             app:destination="@id/factFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/hold"
+            app:popEnterAnim="@anim/hold"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
@@ -27,8 +27,8 @@
             android:id="@+id/action_factFragment_to_imageFragment"
             app:destination="@id/imageFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/hold"
+            app:popEnterAnim="@anim/hold"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
