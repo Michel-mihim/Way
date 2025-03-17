@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.way.databinding.FragmentFactBinding
 
 class FactFragment : Fragment() {
 
     companion object {
         const val ARGS_FACT = "fact"
+
+        fun createArgs(fact: String): Bundle =
+            bundleOf(ARGS_FACT to fact)
     }
 
     private lateinit var binding: FragmentFactBinding
@@ -27,9 +32,16 @@ class FactFragment : Fragment() {
         val fact = requireArguments().getString(ARGS_FACT)
         binding.fact.text = fact
 
-        binding.imageButton.setOnClickListener {  }
+        val imageId = if (fact.equals(getString(R.string.cat_fact))) R.drawable.barsik else R.drawable.hamsters
 
-        binding.back.setOnClickListener { }
+        binding.imageButton.setOnClickListener {
+            findNavController().navigate(R.id.action_factFragment_to_imageFragment,
+                ImageFragment.createArgs(imageId))
+        }
+
+        binding.back.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
     }
 

@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.way.databinding.FragmentStartBinding
 
@@ -26,14 +24,14 @@ class StartFragment : Fragment() {
         binding.catButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_startFragment_to_factFragment,
-                bundleOf(FactFragment.ARGS_FACT to getString(R.string.cat_fact))
+                FactFragment.createArgs(getString(R.string.cat_fact))
                 )
         }
 
         binding.hamsterButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_startFragment_to_factFragment,
-                bundleOf(FactFragment.ARGS_FACT to getString(R.string.hamster_fact))
+                FactFragment.createArgs(getString(R.string.hamster_fact))
                 )
         }
     }

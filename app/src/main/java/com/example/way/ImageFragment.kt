@@ -4,10 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.way.databinding.FragmentImageBinding
 
 class ImageFragment : Fragment() {
+
+    companion object {
+        private const val ARGS_IMAGE = "image"
+
+        fun createArgs(imageResId: Int): Bundle =
+            bundleOf(ARGS_IMAGE to imageResId)
+    }
 
     private lateinit var binding: FragmentImageBinding
 
@@ -20,9 +29,15 @@ class ImageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.goToStartButton.setOnClickListener { }
+        binding.image.setImageResource(requireArguments().getInt(ARGS_IMAGE))
 
-        binding.back.setOnClickListener { }
+        binding.goToStartButton.setOnClickListener {
+            findNavController().popBackStack(R.id.startFragment, false)
+        }
+
+        binding.back.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
     }
 
