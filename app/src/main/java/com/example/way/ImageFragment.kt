@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -30,6 +31,9 @@ class ImageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.image.setImageResource(requireArguments().getInt(ARGS_IMAGE))
+
+        binding.image.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        binding.image.animate()
 
         binding.goToStartButton.setOnClickListener {
             findNavController().popBackStack(R.id.startFragment, false)
