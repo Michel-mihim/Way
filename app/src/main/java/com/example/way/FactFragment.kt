@@ -9,6 +9,10 @@ import com.example.way.databinding.FragmentFactBinding
 
 class FactFragment : Fragment() {
 
+    companion object {
+        const val ARGS_FACT = "fact"
+    }
+
     private lateinit var binding: FragmentFactBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -19,6 +23,9 @@ class FactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val fact = requireArguments().getString(ARGS_FACT)
+        binding.fact.text = fact
 
         binding.imageButton.setOnClickListener {  }
 
